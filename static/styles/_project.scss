@@ -1,0 +1,89 @@
+$header: 'AntennaBlack', sans-serif;
+$bodyfront: "AntennaMedium", sans-serif;
+$red: #B71C1C;
+
+.sfc-breaking-embed {
+  background-color: black;
+  margin-top: -20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 12px;
+}
+
+.header.clearfix {
+  display: none;
+}
+
+// DEBUG STYLES
+.debug {
+  .header-branding a.logo-link {
+    height: 38px;
+  }
+}
+// END DEBUG
+
+.digital_pass_promo {
+  background-color: white;
+}
+
+.sfc-h1-head {
+  font-family: $header;
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 3.75rem;
+  line-height: 1em;
+}
+
+
+.special-head {
+  @extend .sfc-h1-head;
+  color: red;
+}
+
+.sfc-deck {
+  font-family: $bodyfront;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+}
+
+.medium-2.columns {
+  padding: 0px;
+}
+
+.kicker-link {
+  font-family: $header;
+  font-weight: normal;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1em;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.sfc-label {
+  display: block;
+  width: 120px;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: $red;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 40.063em) {
+  a .sfc-h1-head {
+    font-size: 2.75em;
+  }
+
+  .sfc-breaking-embed {
+    margin-bottom: 10px;
+  }
+}

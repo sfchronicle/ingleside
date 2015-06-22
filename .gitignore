@@ -1,0 +1,9 @@
+*.db
+*.pyc
+.DS_Store
+migrations/
+node_modules/
+bower_components/
+*.css
+*.css.map
+build/
