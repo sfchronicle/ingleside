@@ -142,6 +142,15 @@ module.exports = function (grunt) {
       }
     },
 
+    open: {
+      dev: {
+        path: 'http://127.0.0.1:5000'
+      },
+      prod: {
+        path: 'http://sfchronicle.com'
+      }
+    },
+
     htmlmin: {
       dist: {
         options: {
@@ -261,7 +270,8 @@ module.exports = function (grunt) {
     grunt.task.run([
       'concurrent:server',
       'autoprefixer',
-      'flask',  //'connect:livereload',
+      'flask',
+      'open:dev',
       'watch'
     ]);
   });
