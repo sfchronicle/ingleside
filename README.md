@@ -1,4 +1,4 @@
-# Project base
+# Ingleside
 A simple flask scaffold for building client-side news graphics and applications. Includes:
 
 - Livereload for fast development
@@ -13,7 +13,7 @@ A simple flask scaffold for building client-side news graphics and applications.
 
 ### Installation
 ```bash
-$ git clone git@github.com:sfchronicle/project-base.git $PROJECT_NAME
+$ git clone git@github.com:sfchronicle/ingleside.git $PROJECT_NAME
 $ cd $PROJECT_NAME
 $ mkvirtualenv $PROJECT_NAME
 $ pip install -r requirements && npm install && bower install
