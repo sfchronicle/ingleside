@@ -26,9 +26,24 @@ $ grunt serve  # visit localhost:5000 in your browser
 
 Coming soon.
 
-## Deployment
+### Build and deployment
+Create a `local_settings.py` file in the `settings` directory. Add the following env variables:
+```python
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
+````
 
-Coming soon.
+Add the bucket and region you plan to deploy to in `production.py`. Defaults to:
+```python
+import os
+
+S3_BUCKET_NAME = 'sfchronicle'
+S3_REGION = 'us-west-1'
+```
+
+Now run `build.py` to compress assets for production and upload production files to Amazon S3
+```bash
+$ python
 
 ## Contributing
 
