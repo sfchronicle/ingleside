@@ -42,6 +42,7 @@ S3_REGION = 'us-west-1'
 Now run `build.py` to compress assets for production and upload production files to Amazon S3
 ```bash
 $ python
+```
 
 ## Contributing
 
