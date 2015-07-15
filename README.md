@@ -9,7 +9,9 @@ A simple flask scaffold for building client-side news graphics and applications.
 ### Requirements
 - Python 2.7.x
 - Node.js 0.12
-- Bower and Grunt ($ npm install -g grunt-cli bower)
+  - uglifyjs (`npm install -g uglifyjs`)
+  - clean-css (`npm install -g cleancss`)
+  - Bower and Grunt (`$ npm install -g grunt-cli bower`)
 
 ### Installation
 ```bash

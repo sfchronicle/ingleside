@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask.ext.assets import Environment
 
 # Create application
 app = Flask(__name__)
@@ -13,3 +14,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///{}'.format(
     app.config['DATABASE_FILE'])
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
+
+# asset management
+assets =  Environment(app)
