@@ -31,12 +31,10 @@ Create a `local_settings.py` file in the `settings` directory. Add the following
 ```python
 AWS_ACCESS_KEY_ID = ''
 AWS_SECRET_ACCESS_KEY = ''
-````
+```
 
 Add the bucket and region you plan to deploy to in `production.py`. Defaults to:
 ```python
-import os
-
 S3_BUCKET_NAME = 'sfchronicle'
 S3_REGION = 'us-west-1'
 ```
