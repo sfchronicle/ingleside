@@ -18,7 +18,7 @@ A simple flask scaffold for building client-side news graphics and applications.
 $ git clone git@github.com:sfchronicle/ingleside.git $PROJECT_NAME
 $ cd $PROJECT_NAME
 $ mkvirtualenv $PROJECT_NAME
-$ pip install -r requirements && npm install && bower install
+$ pip install -r requirements.txt && npm install && bower install
 $ grunt serve  # visit localhost:5000 in your browser
 ```
 
