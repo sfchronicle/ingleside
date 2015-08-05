@@ -1,3 +1,5 @@
+**This is *pre-alpha software*. It's literally only been used once. We're working hard to turn into something awesome, but don't rely on this template just yet. If you want a soup-to-nuts flask template, check out NPR Visual's [app-template](https://github.com/nprapps/app-template).**
+
 # Ingleside
 A simple flask scaffold for building client-side news graphics and applications. Includes:
 
@@ -23,7 +25,6 @@ $ grunt serve  # visit localhost:5000 in your browser
 ```
 
 ## Structure
-
 Coming soon.
 
 ### Build and deployment
@@ -45,15 +46,12 @@ $ python build.py
 ```
 
 ## Contributing
-
 1. Fork it.
 2. Create a branch (`git checkout -b username-patch-n`)
 3. Commit your changes (`git commit -am "Added support for MovableType"`)
 4. Push to the branch (`git push origin username-patch-n`)
 5. Open a [Pull Request](http://github.com/github/markup/pulls)
 6. Enjoy some [artisanal toast](https://www.eater.com/2014/5/30/6215971/artisanal-toast-is-taking-the-nation-by-storm)
-
-
 
 ## License
 The MIT License (MIT)
