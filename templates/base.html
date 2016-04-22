@@ -3,10 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="http://www.sfchronicle.com/favicon.ico?v=3">
     {% block head %}{% endblock %}
+    <link rel="stylesheet" href="http://www.sfchronicle.com/external/css/global.sharedmain.r6.14.1.4.css">
+    <link rel="stylesheet" href="http://www.sfchronicle.com/external/css/global.sharedmodules.r6.14.1.4.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+
   </head>
   <body class="{% if config.DEBUG %}debug{% endif %}">
     <!--[if lt IE 10]>

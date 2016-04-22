@@ -21,28 +21,16 @@ $ git clone git@github.com:sfchronicle/ingleside.git $PROJECT_NAME
 $ cd $PROJECT_NAME
 $ mkvirtualenv $PROJECT_NAME
 $ pip install -r requirements.txt && npm install && bower install
-$ grunt serve  # visit localhost:5000 in your browser
+$ grunt serve
 ```
 
 ## Structure
 Coming soon.
 
 ### Build and deployment
-Create a `local_settings.py` file in the `settings` directory. Add the following env variables:
-```python
-AWS_ACCESS_KEY_ID = ''
-AWS_SECRET_ACCESS_KEY = ''
-```
-
-Add the bucket and region you plan to deploy to in `production.py`. Defaults to:
-```python
-S3_BUCKET_NAME = 'sfchronicle'
-S3_REGION = 'us-west-1'
-```
-
-Now run `build.py` to compress assets for production and upload production files to Amazon S3
+Now run `build.py` and specify if its for `production` or `staging` to compress assets for upload.
 ```bash
-$ python build.py
+$ python build.py production
 ```
 
 ## Contributing
