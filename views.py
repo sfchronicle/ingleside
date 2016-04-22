@@ -1,6 +1,6 @@
-from flask import render_template  #, redirect, url_for
+from flask import render_template, redirect, url_for
 
-from app import app, db
+from app import app, db, freezer
 from models import *
 
 

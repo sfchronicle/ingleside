@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "homepage": "https://github.com/sfchronicle/project-base",
   "authors": [
-    "Aaron Williams <aaron.colby.williams@gmail.com>"
+    "Aaron Williams <aaron.colby.williams@gmail.com>",
+    "Lucio Villa <lucio310@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [
