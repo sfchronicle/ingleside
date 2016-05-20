@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width">
     <link rel="icon" href="http://www.sfchronicle.com/favicon.ico?v=3">
     {% block head %}{% endblock %}
-    <link rel="stylesheet" href="http://www.sfchronicle.com/external/css/global.sharedmain.r6.14.1.4.css">
-    <link rel="stylesheet" href="http://www.sfchronicle.com/external/css/global.sharedmodules.r6.14.1.4.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   </head>
   <body class="{% if config.DEBUG %}debug{% endif %}">
@@ -17,8 +16,10 @@
     <![endif]-->
     {% block content %}{% endblock %}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='bower_components/foundation-sites/js/foundation.core.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='bower_components/foundation-sites/js/foundation.util.mediaQuery.js') }}"></script>
     {% block javascript %}{% endblock %}
 
     {% if config.DEBUG %}
