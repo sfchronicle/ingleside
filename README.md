@@ -1,5 +1,3 @@
-**This is *pre-alpha software*. It's literally only been used once. We're working hard to turn into something awesome, but don't rely on this template just yet. If you want a soup-to-nuts flask template, check out NPR Visual's [app-template](https://github.com/nprapps/app-template).**
-
 # Ingleside
 A simple flask scaffold for building client-side news graphics and applications. Includes:
 
@@ -24,9 +22,6 @@ $ pip install -r requirements.txt && npm install && bower install
 $ grunt serve
 ```
 
-## Structure
-Coming soon.
-
 ### Build and deployment
 Now run `build.py` and specify if its for `production` or `staging` to compress assets for upload.
 ```bash
@@ -44,7 +39,7 @@ $ python build.py production
 ## License
 The MIT License (MIT)
 
-Copyright The San Francisco Chronicle from '93 'til ...
+Copyright The San Francisco Chronicle
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

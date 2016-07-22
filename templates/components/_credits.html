@@ -1,0 +1,8 @@
+{% macro info(name='Author Author', email='email@sfchronicle.com', twitter='sfchronicle') -%}
+
+<div class="entry">{{ name }} &bull; 
+	<a href="mailto:{{ email }}@sfchronicle.com">{{ email }}@sfchronicle.com</a> &bull; 
+	<a href = "https://twitter.com/{{ twitter }}" target="_blank">@{{ twitter }}</a>
+</div>
+
+{%- endmacro %}

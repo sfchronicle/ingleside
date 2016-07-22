@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}New Web App | SF Chronicle{% endblock %}
+{% block title %}{{title}}{% endblock %}
 
 {% block head %}
+{% include '_components/_social.html' %}
 {% endblock %}
+
+{% block hearst_title %}{% endblock %}
+{% block hearst_class %}{% endblock %}
+{% block author %}{% endblock %}
 
 {% block content %}
 <main class="container">
