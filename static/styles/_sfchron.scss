@@ -30,7 +30,7 @@ p {
 
   a {
     text-decoration: none;
-    color: $gray-blue;
+    color: $link;
   }
 
   @media #{$mobile} {
@@ -103,6 +103,7 @@ p {
 
 .float-img {
     max-width: 420px;
+    
     &.vertical {
       max-width: 300px;
     }
@@ -129,6 +130,7 @@ p {
         margin: 2em auto;
       }
     }
+
     &.right {
       float: right;
       margin: 1em -7.5em 0.5em 1.5em;
@@ -138,6 +140,7 @@ p {
         margin: 2em auto;
       }
     }
+
     &.center {
       margin: 0 auto;
       max-width: 600px;
@@ -148,30 +151,12 @@ p {
 
 
 header {
-  background: $header;
+  background: $bg-color;
   overflow: visible;
   opacity: 0.9;
   a {
     color: #333;
   }
-}
-
-.menu-btn {
-  line-height: 1;
-  float:right;
-}
-
-.menu-icon{
-  background: $link;
-  padding: 11px 19px 10px 15px;
-}
-
-.menu-icon:after{
-  height:3px;
-}
-.menu-icon:hover::after {
-    background: #fff;
-    box-shadow: 0 7px 0 #fff, 0 14px 0 #fff;
 }
 
 .link {
@@ -188,7 +173,7 @@ header {
 
   &.special {
     a {
-      color: $gray-blue;
+      color: $link;
     }
   }
 
@@ -202,6 +187,7 @@ header {
 .logo-link {
   cursor: pointer;
   margin: 0 0 0 10px;
+  
   img {
     opacity: 1;
     height: 20px;
@@ -221,20 +207,23 @@ header {
     float: left;
     padding: 6px 0 0 8px;
     margin: 0;
-      img {
-       vertical-align: text-bottom;
-       width:180px;
-      }
-      @media #{$mobile} {
-        display: none;
-      }
+    
+    img {
+     vertical-align: text-bottom;
+     width:180px;
+    }
+
+    @media #{$mobile} {
+      display: none;
+    }
   }
 
   .mobile-logo {
     display: none;
-     @media #{$mobile} {
-       display: inline;
-     }
+    
+    @media #{$mobile} {
+      display: inline;
+    }
 
     img {
       height: 16px;
@@ -250,38 +239,40 @@ header {
 }
 
 #mobile-menu{
-    display:none;
-    position: fixed;
-    z-index: 5;
-    width: 100%;
-    top: 37px;
-    background: white;
-    height: 250px;
-    padding-top: 10px;
-    box-shadow: 0 0 6px 0 #696969;
+  display:none;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  top: 37px;
+  background: white;
+  height: 250px;
+  padding-top: 10px;
+  box-shadow: 0 0 6px 0 #696969;
 
-    ul {
-      text-align: center;
-      padding: 0;
+  ul {
+    text-align: center;
+    padding: 0;
+  }
+
+  li {
+
+    a{
+      color:$link;
+      text-decoration:none;
     }
-
-    li {
-
-      a{
-        color:$link;
-        text-decoration:none;
-      }
-    }
+  }
 }
 
 .project-logo {
   max-width: 730px;
   margin: 0 auto;
+  
   img {
     width: 160px;
     padding-left: 15px;
     float:right;
     margin-top: -100px;
+    
     @media #{$mobile} {
       float: none;
       width: 150px;
@@ -294,11 +285,13 @@ header {
     float: left;
     margin: 0;
     margin-right: 10px;
+    
     img {
       width: 240px;
       margin-top: 0;
       margin-bottom: 5px;
     }
+    
     @media #{$mobile} {
       margin-right: 0;
     }
@@ -310,6 +303,7 @@ header {
   font-style: italic;
   font-size: 17px;
   padding-top: 20px;
+  
   a {
     text-decoration:none;
     color: $link;
@@ -377,40 +371,6 @@ footer {
   right: 0;
 }
 
-.special-head {   
-  color: $gray-blue;    
-  font-family: $serif-bold;   
-  font-size: 16px;    
-}
-
-.specialhead {
-  text-align: center;
-  text-transform: uppercase;
-  color: #9bb5d8;
-  font-family: "Dispatch";
-  font-size: 15px;
-  margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.61);
-  max-width: 320px;
-  padding: 2px 0px;
-}
-
-.paststorylink {
-  font-size: 16px;
-  
-  &.one {
-    margin-top: 40px;
-  }
-  
-  text-align: center;
-  font-style: italic;
-  
-  a {
-    text-decoration:none;
-    color: $link;
-  }
-}
-
 .credit {
   text-align: left;
   clear: left;
@@ -418,7 +378,7 @@ footer {
   font-size: 12px;
   color: $dark-gray;
   font-style: italic;
-  font-family: $block-graphics;
+  font-family: $sans-serif-light;
   
   @media #{$tablet} {
     padding: 0px 10px;
@@ -450,11 +410,6 @@ footer {
   &.landing {
     margin-bottom: 2.5em;
   }
-
-  .year {
-    font-family:$banner;
-    color:$red;
-  }
 }
 
 .byline {
@@ -466,7 +421,8 @@ footer {
   font-size: 1.2em;
   margin-bottom: 15px;
   margin-top: 35px;
-  font-family: $body-bold;
+  font-family: $serif-bold;
+  
   &.padded {
     padding-top: 10px;
   }
@@ -474,11 +430,13 @@ footer {
 
 #social {
   text-align: center;
+  
   a {
     font-size: 25px;
     padding: 8px;
     color: $link;
     cursor: pointer;
+    
     &:hover {
       color: $light-gray;
       cursor: pointer;
@@ -487,11 +445,13 @@ footer {
 }
 
 #social-inline {
+  
   .social {
     display: inline-block;
     padding: 0 10px;
     float: left;
   }
+  
   a {
     font-size: 20px;
     color: $share-gray;
@@ -504,21 +464,21 @@ footer {
 }
 
 .author {
-    margin-top: 10px;
-    font-size: 15px;
-    text-align: center;
-    margin-bottom:0;
+  margin-top: 10px;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom:0;
 
-    a {
-      color:#fff;
-      border-bottom:1px solid #ccc;
-    }
+  a {
+    color:#fff;
+    border-bottom:1px solid #ccc;
+  }
 }
 
 .date {
-    font-size: 15px;
-    text-align: center;
-    margin-bottom: 40px;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .dont-miss-related {
@@ -528,7 +488,7 @@ footer {
   flex-wrap: wrap;
   margin-bottom: 20px;
   font-size: 17px;
-  font-family: $block-graphics;
+  font-family: $sans-serif-light;
 
   .story {
     flex: 0 0 25%;
@@ -581,7 +541,7 @@ footer {
   }
 
   a {
-    color:#6C85A5;
+    color:$link;
     text-transform:uppercase;
   }
 
@@ -603,6 +563,7 @@ footer {
   .padded {
     padding: 10px;
   }
+}
 
 
 .divider {
@@ -616,7 +577,6 @@ footer {
 .credits {
   margin: 30px auto;
   font-size: 15px;
-  font-family: $body;
   text-align: center;
   margin-bottom: 40px;
   a {
@@ -713,10 +673,4 @@ td {
   font-size: 0.5em;
   font-family: $sans-serif;
   margin-bottom: 2em;
-}
-
-.bottom-footnote {
-  margin-top:3em;
-  font-style: italic;
-  font-size: 0.7em;
 }
