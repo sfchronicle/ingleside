@@ -11,3 +11,4 @@ data/
 .sass-cache/
 .webassets-cache/
 local_settings.py
+static/scripts/main.*.js

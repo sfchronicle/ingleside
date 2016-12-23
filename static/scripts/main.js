@@ -52,15 +52,3 @@ App = {
   }
   window.__twitterIntentHandler = true;
 }());
-
-var button = document.getElementById('menu-btn');
-
-button.onclick = function() {
-    var div = document.getElementById('mobile-menu');
-    if (div.style.display !== 'block') {
-        div.style.display = 'block';
-    }
-    else {
-        div.style.display = 'none';
-    }
-};

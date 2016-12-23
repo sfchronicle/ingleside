@@ -1,8 +1,6 @@
 from flask import render_template, redirect, url_for, request
 
-from app import app, db, freezer
-from models import *
-
+from app import app, freezer
 
 # Project Title
 app.config['PROJ_TITLE'] = ''
