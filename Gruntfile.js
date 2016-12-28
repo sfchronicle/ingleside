@@ -36,8 +36,7 @@ module.exports = function (grunt) {
         livereload: true
       },
       bower: {
-        files: ['bower.json'],
-        tasks: ['wiredep']
+        files: ['bower.json']
       },
       js: {
         files: ['<%= config.app %>/scripts/{,*/}*.js'],
@@ -48,11 +47,11 @@ module.exports = function (grunt) {
       },
       sass: {
         files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['sass:server', 'autoprefixer']
+        tasks: ['sass:server', 'postcss']
       },
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
-        tasks: ['autoprefixer']
+        tasks: ['postcss']
       },
       livereload: {
         files: [
@@ -103,12 +102,15 @@ module.exports = function (grunt) {
     },
 
     // Add vendor prefixed styles
-    autoprefixer: {
+    postcss: {
       options: {
-        browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'],
         map: {
-          prev: '<%= config.app %>/styles'
-        }
+          inline: true
+        },
+        processors: [
+          require('autoprefixer')({browsers: 'last 2 versions'})
+        ]
+        
       },
       dist: {
         files: [{
@@ -205,7 +207,6 @@ module.exports = function (grunt) {
     }
   });
 
-
   // New task for flask server
   grunt.registerTask('flask', 'Run flask server.', function() {
      var spawn = require('child_process').spawn;
@@ -215,8 +216,7 @@ module.exports = function (grunt) {
      spawn('python', ['main.py'], PIPE);
   });
 
-
-  grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
+  grunt.registerTask('default', 'start the server and preview your app, --allow-remote for remote access', function (target) {
     if (grunt.option('allow-remote')) {
       grunt.config.set('connect.options.hostname', '0.0.0.0');
     }
@@ -226,33 +226,10 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'concurrent:server',
-      'autoprefixer',
+      'postcss',
       'flask',
       'open:dev',
       'watch'
     ]);
   });
-
-  grunt.registerTask('server', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run([target ? ('serve:' + target) : 'serve']);
-  });
-
-  // Build
-  grunt.registerTask('build', [
-    'rev',
-    'usemin',
-    'htmlmin',
-    // 'wiredep', /* enable to let grunt autopopulate (base|index).html with bower components */
-    'sass',
-    'autoprefixer',
-    'htmlmin'
-  ]);
-
-  grunt.registerTask('default', [
-    // 'wiredep', /* enable to let grunt autopopulate (base|index).html with bower components */
-    'sass',
-    'autoprefixer',
-    'watch'
-  ]);
 };
