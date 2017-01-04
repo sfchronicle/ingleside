@@ -1,4 +1,6 @@
 {
+  "test_slug": "",
+  "slug": "",
   "title": "",
   "description": "",
   "seo_title": "",
@@ -6,9 +8,8 @@
   "hearst_category":"",
   "date":"2017-01-01",
   "url": "http://projects.sfchronicle.com/",
-  "slug": "",
   "twitter_text":"",
   "hashtag":"",
-  "image": "assets/social.jpg",
+  "image": "static/social.jpg",
   "sheets": []
 }

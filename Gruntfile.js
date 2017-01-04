@@ -10,6 +10,8 @@
 // If you want to recursively match all subfolders, use:
 // 'test/spec/**/*.js'
 
+var path = require("path");
+
 module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
@@ -188,11 +190,11 @@ module.exports = function (grunt) {
       ]
     },
 
-    // Task to copy 'build' directory to server
+    // Task that copies 'build' directory to the staging/production server
     sync: {
       staging: {
         files: [
-          { expand: true, cwd: 'build/', src: ['**'], dest: '//Volumes/SFGextras/Projects/test-proj/<%= grunt.data.json.project.slug %>'}
+          { expand: true, cwd: 'build/', src: ['**'], dest: '//Volumes/SFGextras/Projects/test-proj/<%= grunt.data.json.project.test_slug %>'}
         ],
         verbose: true, // Default: false
         failOnError: true, // Fail the task when copying is not possible. Default: false
@@ -201,7 +203,7 @@ module.exports = function (grunt) {
       },
       production:{
         files: [
-          { expand: true, cwd: 'build/', src: ['**'], dest: '//Volumes/SFGextras/Projects/test-proj/<%= grunt.data.json.project.slug %>'}
+          { expand: true, cwd: 'build/', src: ['**'], dest: '//Volumes/SFGextras/Projects/2017/<%= grunt.data.json.project.slug %>'}
         ],
         verbose: true, // Default: false
         failOnError: true, // Fail the task when copying is not possible. Default: false
@@ -225,9 +227,38 @@ module.exports = function (grunt) {
     grunt.task.run([
       'concurrent:server',
       'postcss',
+      'state',
+      'json',
       'flask',
       'open:dev',
       'watch'
     ]);
+  });
+
+  /*
+  This module sets up a `grunt.data` object to be used for shared state between
+  modules on each run. Modules that use it should require this task to make sure
+  that they get a clean state on each run. If Grunt starts emitting events,
+  we'll use those to automatically initialize.
+  */
+  grunt.registerTask("state", "Initializes the shared state object", function() {
+    grunt.data = {};
+  });
+
+  /*
+  Loads the project.json file, as well as any matching files in the /data
+  folder, and attaches it to the grunt.data object as grunt.data.json.
+  */
+  grunt.registerTask("json", "Load JSON for templating", function() {
+    var files = grunt.file.expand(["project.json", "data/**/*.json"]);
+    grunt.task.requires("state");
+    grunt.data.json = {};
+
+    files.forEach(function(file) {
+      var json = grunt.file.readJSON(file);
+      var name = path.basename(file).replace(/(\.sheet)?\.json$/, "");
+      grunt.data.json[name] = json;
+    });
+
   });
 };
