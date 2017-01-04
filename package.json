@@ -15,6 +15,7 @@
     "grunt-postcss":"^0.8.0",
     "grunt-sass": "^2.0.0",
     "grunt-svgmin": "^4.0.0",
+    "grunt-sync": "^0.6.2",
     "grunt-usemin": "^3.1.1",
     "jshint-stylish": "^2.2.1",
     "load-grunt-tasks": "^3.5.2",

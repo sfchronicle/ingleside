@@ -176,24 +176,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // Copies remaining files to places other tasks can use
-    copy: {
-      dist: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= config.app %>',
-          dest: '<%= config.dist %>',
-          src: [
-            '*.{ico,png,txt}',
-            'images/{,*/}*.webp',
-            '{,*/}*.html',
-            'styles/fonts/{,*/}*.*'
-          ]
-        }]
-      }
-    },
-
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [
@@ -204,7 +186,30 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
+    },
+
+    // Task to copy 'build' directory to server
+    sync: {
+      staging: {
+        files: [
+          { expand: true, cwd: 'build/', src: ['**'], dest: '//Volumes/SFGextras/Projects/test-proj/<%= grunt.data.json.project.slug %>'}
+        ],
+        verbose: true, // Default: false
+        failOnError: true, // Fail the task when copying is not possible. Default: false
+        updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
+        compareUsing: "md5" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
+      },
+      production:{
+        files: [
+          { expand: true, cwd: 'build/', src: ['**'], dest: '//Volumes/SFGextras/Projects/test-proj/<%= grunt.data.json.project.slug %>'}
+        ],
+        verbose: true, // Default: false
+        failOnError: true, // Fail the task when copying is not possible. Default: false
+        updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
+        compareUsing: "md5" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
+      }
     }
+
   });
 
   // New task for flask server
@@ -216,14 +221,7 @@ module.exports = function (grunt) {
      spawn('python', ['main.py'], PIPE);
   });
 
-  grunt.registerTask('default', 'start the server and preview your app, --allow-remote for remote access', function (target) {
-    if (grunt.option('allow-remote')) {
-      grunt.config.set('connect.options.hostname', '0.0.0.0');
-    }
-    if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
-    }
-
+  grunt.registerTask('default', 'start the server and preview your app', function () {
     grunt.task.run([
       'concurrent:server',
       'postcss',
