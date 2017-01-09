@@ -4,9 +4,9 @@
 // Breakpoints
 // =============================
 
-$mobile: 	 "(max-width: 480px)";
-$tablet: 	 "(max-width: 768px)";
-$text-width: "(max-width: 730px)";
+$mobile:  480px;
+$tablet:  1024px;
+$text-width: 730px;
 $medium-breakpoint: 1024px !default;
 $large-breakpoint:  1440px !default;
 $xlarge-breakpoint: 1920px !default;

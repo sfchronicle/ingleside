@@ -33,7 +33,7 @@ p {
     color: $link;
   }
 
-  @media #{$mobile} {
+  @media (max-width: $mobile) {
       font-size: 0.8em;
   }
 
@@ -83,7 +83,7 @@ p {
   .caption{
     padding:0;
 
-      @media #{$text-width}{
+      @media (max-width: $text-width){
         padding:0 10px;
       }
   }
@@ -117,7 +117,7 @@ p {
       padding:0;
     }
 
-    @media #{$text-width}{
+    @media (max-width: $text-width){
       padding:0 10px;
     }
 
@@ -185,18 +185,32 @@ header {
 }
 
 .logo-link {
+  float:left;
   cursor: pointer;
-  margin: 0 0 0 10px;
   
   img {
     opacity: 1;
     height: 20px;
   }
+
+  @media (max-width: $mobile) {
+    display: none;
+  }
 }
 
+#mobile-logo{
+  padding-top:1px;
+  display:none;
+
+  img{
+    width: 21px;
+    height: auto;
+  }
+  @media (max-width: $mobile) {
+    display: block;
+  }
+}
 header {
-  -webkit-box-shadow: 0 0 6px 0 $dark-gray;
-  -moz-box-shadow: 0 0 6px 0 $dark-gray;
   box-shadow: 0 0 6px 0 $dark-gray;
 
   a {
@@ -213,7 +227,7 @@ header {
      width:180px;
     }
 
-    @media #{$mobile} {
+    @media (max-width: $mobile) {
       display: none;
     }
   }
@@ -221,7 +235,7 @@ header {
   .mobile-logo {
     display: none;
     
-    @media #{$mobile} {
+    @media (max-width: $mobile) {
       display: inline;
     }
 
@@ -273,7 +287,7 @@ header {
     float:right;
     margin-top: -100px;
     
-    @media #{$mobile} {
+    @media (max-width: $mobile) {
       float: none;
       width: 150px;
       padding-right: 10px;
@@ -292,7 +306,7 @@ header {
       margin-bottom: 5px;
     }
     
-    @media #{$mobile} {
+    @media (max-width: $mobile) {
       margin-right: 0;
     }
   }
@@ -356,7 +370,7 @@ footer {
       max-width:800px;
     }
   
-    @media #{$mobile} {
+    @media (max-width: $mobile) {
       font-size: 1.8em;
     }
   }
@@ -380,12 +394,12 @@ footer {
   font-style: italic;
   font-family: $sans-serif-light;
   
-  @media #{$tablet} {
+  @media (max-width: $tablet) {
     padding: 0px 10px;
     padding-top: 10px;
   }
   
-  @media #{$mobile} {
+  @media (max-width: $mobile) {
     padding: 0px 10px;
     padding-top: 10px;
   }
@@ -491,18 +505,18 @@ footer {
   font-family: $sans-serif-light;
 
   .story {
-    flex: 0 0 25%;
+        flex: 0 0 25%;
 
     &.three {
-      flex: 0 0 33%;
+          flex: 0 0 33%;
 
         @media screen and (max-width: 560px) {
-          flex: 1 1 100%;
+              flex: 1 1 100%;
        }
     }
 
     @media screen and (max-width: 560px) {
-      flex: 1 1 100%;
+          flex: 1 1 100%;
     }
 
     & a {
@@ -616,7 +630,7 @@ button {
   width: 50%;
   margin: 0 auto;
 
-  @media #{$tablet} {
+  @media (max-width: $tablet) {
   width: 100%;
   }
 }
@@ -630,7 +644,7 @@ button {
   font-style: italic;
   font-family: "AntennaExtraLight";
 
-  @media #{$tablet} {
+  @media (max-width: $tablet) {
     padding-left: 10px;
   }
 

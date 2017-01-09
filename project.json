@@ -1,15 +1,5 @@
 {
-  "test_slug": "",
-  "slug": "",
-  "title": "",
-  "description": "",
-  "seo_title": "",
-  "author":"",
-  "hearst_category":"",
-  "date":"2017-01-01",
-  "url": "http://projects.sfchronicle.com/",
-  "twitter_text":"",
-  "hashtag":"",
-  "image": "static/social.jpg",
+  "staging_path": "",
+  "production_path": "",
   "sheets": []
 }

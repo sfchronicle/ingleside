@@ -4,34 +4,16 @@
 // <%= pkg.name %> <%= pkg.version %>
 'use strict';
 
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// If you want to recursively match all subfolders, use:
-// 'test/spec/**/*.js'
-
 var path = require("path");
 
 module.exports = function (grunt) {
 
-  // Time how long tasks take. Can help when optimizing build times
-  require('time-grunt')(grunt);
-
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
-
-  // Configurable paths
-  var config = {
-    templates: 'templates',
-    app: 'static',
-    dist: 'static'
-  };
 
   // Define the configuration for all the tasks
   grunt.initConfig({
 
-    // Project settings
-    config: config,
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       options: {
@@ -41,28 +23,21 @@ module.exports = function (grunt) {
         files: ['bower.json']
       },
       js: {
-        files: ['<%= config.app %>/scripts/{,*/}*.js'],
+        files: ['static/scripts/**/*.js'],
         tasks: ['jshint']
       },
       gruntfile: {
         files: ['Gruntfile.js']
       },
       sass: {
-        files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
+        files: ['static/styles/**/*.{scss,sass}'],
         tasks: ['sass:server', 'postcss']
       },
-      styles: {
-        files: ['<%= config.app %>/styles/{,*/}*.css'],
-        tasks: ['postcss']
-      },
-      livereload: {
-        files: [
-          '<%= config.templates %>/{,*/}*.html',
-          '<%= config.app %>/styles/{,*/}*.css',
-          '<%= config.app %>/images/{,*/}*'
-        ]
+      reload: {
+        files: ['templates/**/*.html','static/images/**/*']
       }
     },
+
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
@@ -71,9 +46,7 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= config.app %>/scripts/{,*/}*.js',
-        '!<%= config.app %>/scripts/vendor/*',
-        'test/spec/{,*/}*.js'
+        'static/scripts/**/*.js'
       ]
     },
 
@@ -86,18 +59,18 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/styles',
+          cwd: 'static/styles',
           src: ['*.{scss,sass}'],
-          dest: '<%= config.app %>/styles',
+          dest: 'static/styles',
           ext: '.css'
         }]
       },
       server: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/styles',
+          cwd: 'static/styles',
           src: ['*.{scss,sass}'],
-          dest: '<%= config.app %>/styles',
+          dest: 'static/styles',
           ext: '.css'
         }]
       }
@@ -107,41 +80,18 @@ module.exports = function (grunt) {
     postcss: {
       options: {
         map: {
-          inline: true
+          inline: false
         },
         processors: [
-          require('autoprefixer')({browsers: 'last 2 versions'})
+          require('autoprefixer')({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'] })
         ]
-        
       },
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= config.app %>/styles',
-          src: '{,*/}*.css',
-          dest: '<%= config.app %>/styles'
-        }]
-      }
-    },
-    // The following *-min tasks produce minified files in the dist folder
-    imagemin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= config.app %>/images',
-          src: '{,*/}*.{gif,jpeg,jpg,png}',
-          dest: '<%= config.dist %>/images'
-        }]
-      }
-    },
-
-    svgmin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= config.app %>/images',
-          src: '{,*/}*.svg',
-          dest: '<%= config.dist %>/images'
+          cwd: 'static/styles',
+          src: ['*.css'],
+          dest: 'static/styles',
         }]
       }
     },
@@ -151,61 +101,24 @@ module.exports = function (grunt) {
         path: 'http://127.0.0.1:5000'
       },
       prod: {
-        path: 'http://sfchronicle.com'
+        path: 'http://projects.sfchronicle.com/2017/<%= grunt.data.json.project.production_path %>'
       }
-    },
-
-    htmlmin: {
-      dist: {
-        options: {
-          collapseBooleanAttributes: true,
-          collapseWhitespace: true,
-          conservativeCollapse: true,
-          removeAttributeQuotes: true,
-          removeCommentsFromCDATA: true,
-          removeEmptyAttributes: true,
-          removeOptionalTags: true,
-          // true would impact styles with attribute selectors
-          removeRedundantAttributes: false,
-          useShortDoctype: true
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= config.dist %>',
-          src: '{,*/}*.html',
-          dest: '<%= config.dist %>'
-        }]
-      }
-    },
-
-    // Run some tasks in parallel to speed up build process
-    concurrent: {
-      server: [
-        'sass:server'
-      ],
-      dist: [
-        'sass',
-        'imagemin',
-        'svgmin'
-      ]
     },
 
     // Task that copies 'build' directory to the staging/production server
     sync: {
       staging: {
         files: [
-          { expand: true, cwd: 'build/', src: ['**'], dest: '//Volumes/SFGextras/Projects/test-proj/<%= grunt.data.json.project.test_slug %>'}
+          { expand: true, cwd: 'build/', src: ['**'], dest: process.env.STAGING_PATH + '<%= grunt.data.json.project.staging_path %>'}
         ],
-        verbose: true, // Default: false
         failOnError: true, // Fail the task when copying is not possible. Default: false
         updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
         compareUsing: "md5" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
       },
       production:{
         files: [
-          { expand: true, cwd: 'build/', src: ['**'], dest: '//Volumes/SFGextras/Projects/2017/<%= grunt.data.json.project.slug %>'}
+          { expand: true, cwd: 'build/', src: ['**'], dest: process.env.PRODUCTION_PATH + '<%= grunt.data.json.project.production_path %>' }
         ],
-        verbose: true, // Default: false
         failOnError: true, // Fail the task when copying is not possible. Default: false
         updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
         compareUsing: "md5" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
@@ -214,7 +127,7 @@ module.exports = function (grunt) {
 
   });
 
-  // New task for flask server
+  // Bring up flask server
   grunt.registerTask('flask', 'Run flask server.', function() {
      var spawn = require('child_process').spawn;
      grunt.log.writeln('Starting Flask development server.');
@@ -223,17 +136,15 @@ module.exports = function (grunt) {
      spawn('python', ['main.py'], PIPE);
   });
 
-  grunt.registerTask('default', 'start the server and preview your app', function () {
-    grunt.task.run([
-      'concurrent:server',
-      'postcss',
-      'state',
-      'json',
-      'flask',
-      'open:dev',
-      'watch'
-    ]);
-  });
+  grunt.registerTask('default', [
+    'sass:server',
+    'postcss',
+    'flask',
+    'state',
+    'json',
+    'open:dev',
+    'watch'
+  ]);
 
   /*
   This module sets up a `grunt.data` object to be used for shared state between

@@ -2,7 +2,7 @@ import os
 import sys
 
 from app import app, assets, Environment, freezer
-from views import *
+from project import *
 
 BUILD_DIR = os.path.join(os.path.realpath(os.path.dirname(__file__)), 'build')
 ROOT_URL = '//extras.sfgate.com'
