@@ -1,8 +1,12 @@
 from flask import render_template, redirect, url_for, request
 from app import app, freezer
 
-# Site slug
-app.config['PATH'] = ''
+app.config['TEST_PROJECT_PATH'] = 'test-proj'
+app.config['PROJECT_YEAR'] = '2017'
+
+# Site paths
+app.config['STAGING_PATH'] = ''
+app.config['PRODUCTION_PATH'] = ''
 
 # Category 
 app.config['CATEGORY'] = ''
@@ -16,8 +20,7 @@ app.config['HASHTAG'] = ''
 
 @app.route("/")
 def index():
-  return render_template('index.html',
-  	slug="", 
+  return render_template('index.html', 
   	hearst_class="channel", # All other pages will be 'article'
   	seo_title="",
   	title="",

@@ -1,5 +1,4 @@
 {
-  "staging_path": "",
-  "production_path": "",
-  "sheets": []
+    "production_path": "", 
+    "staging_path": ""
 }

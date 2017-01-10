@@ -6,11 +6,8 @@ from project import *
 
 BUILD_DIR = os.path.join(os.path.realpath(os.path.dirname(__file__)), 'build')
 ROOT_URL = '//extras.sfgate.com'
-
-# CHANGE THE FOLDER SLUG TO NEW PROJECT 
-TEST_PROJECT_NAME = 'test-proj/CHANGE-ME'
-PROJECT_NAME = '2016/CHANGE-ME'
-
+STAGING_PATH = app.config['TEST_PROJECT_PATH'] + '/' + app.config['STAGING_PATH']
+PRODUCTION_PATH = app.config['PROJECT_YEAR'] + '/' + app.config['PRODUCTION_PATH']
 
 if __name__ == '__main__':
     app.config['DEBUG'] = False
@@ -21,11 +18,11 @@ if __name__ == '__main__':
     if args:
         for arg in args: 
             if arg == 'staging':
-                app.config['FREEZER_BASE_URL'] = '{}/{}'.format(ROOT_URL, TEST_PROJECT_NAME)
+                app.config['FREEZER_BASE_URL'] = '{}/{}'.format(ROOT_URL, STAGING_PATH)
                 freezer.freeze()
 
             elif arg == 'production':
-                app.config['FREEZER_BASE_URL'] = '{}/{}'.format(ROOT_URL, PROJECT_NAME)
+                app.config['FREEZER_BASE_URL'] = '{}/{}'.format(ROOT_URL, PRODUCTION_PATH)
                 freezer.freeze()
 
     else:
