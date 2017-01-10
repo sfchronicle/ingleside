@@ -215,6 +215,17 @@ module.exports = function (grunt) {
       var name = path.basename(file).replace(/(\.sheet)?\.json$/, "");
       grunt.data.json[name] = json;
     });
-
   });
+
+  // Deploys project to server. Defaults to staging folder
+  grunt.registerTask('deploy', "Deployed project", function(target) {
+    if (target) {
+      grunt.task.run (['state', 'json', 'sync:' + target]);
+    } else {
+      grunt.task.run(['state', 'json', 'sync:staging']);
+    }
+  });
+
+
+
 };
