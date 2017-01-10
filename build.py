@@ -14,7 +14,7 @@ PROJECT_NAME = '2016/CHANGE-ME'
 
 if __name__ == '__main__':
     app.config['DEBUG'] = False
-    app.config['ASSETS_DEBUG'] = True
+    app.config['ASSETS_DEBUG'] = False
 
     args = sys.argv[1:]
     

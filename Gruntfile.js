@@ -105,6 +105,40 @@ module.exports = function (grunt) {
       }
     },
 
+    // Run build.py file to serve static files 
+    run: {
+      options: {
+        stdout: true,
+        stderr: true,
+      },
+      staging: {
+        exec: 'python build.py staging'
+      },
+      production: {
+        exec: 'python build.py production'
+      }
+    },
+
+    // Converts .html files to .php
+    copy: {
+      production: {
+        files: [{
+          expand: true,
+          cwd: 'build/',
+          src: ['**/*.html'],
+          dest: 'build/',
+          rename: function (dest, src) {
+            return dest + src.replace('.html','.php');
+          }
+        }]
+      }
+    },
+
+    // Deletes .html files from build folder
+    clean: [
+      'build/**/*.html'
+    ],
+
     // Task that copies 'build' directory to the staging/production server
     sync: {
       staging: {
@@ -127,6 +161,8 @@ module.exports = function (grunt) {
 
   });
 
+
+
   // Bring up flask server
   grunt.registerTask('flask', 'Run flask server.', function() {
      var spawn = require('child_process').spawn;
@@ -145,6 +181,15 @@ module.exports = function (grunt) {
     'open:dev',
     'watch'
   ]);
+
+  // Build static files; defaults to staging. Command = 'grunt build:production'
+  grunt.registerTask('build', function(target) {
+    if (target) {
+      grunt.task.run (['run:' + target, 'copy', 'clean']);
+    } else {
+      grunt.task.run(['run:staging', 'copy', 'clean']);
+    }
+  });
 
   /*
   This module sets up a `grunt.data` object to be used for shared state between

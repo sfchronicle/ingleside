@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "foundation-sites": "~6.2.0",
-    "jquery": "~2.2.0",
     "normalize-scss": "normalize.scss#^4.2.1"
   }
 }
