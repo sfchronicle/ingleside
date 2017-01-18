@@ -1,0 +1,35 @@
+/* Common variables used throughout the project
+*/
+
+// Breakpoints
+// =============================
+
+$mobile: 	 "(max-width: 480px)";
+$tablet: 	 "(max-width: 768px)";
+$text-width: "(max-width: 730px)";
+$medium-breakpoint: 1024px !default;
+$large-breakpoint:  1440px !default;
+$xlarge-breakpoint: 1920px !default;
+
+// Colors
+// =============================
+$inset-color: #151414;
+$bg-color: #fff;
+$link: #fff;
+$gray-blue: #6C85A5;
+$dark-gray: #696969;
+$light-gray: #B2B2B2;
+$share-gray: lighten(#4F5C70,10%);
+$back-gray: lighten(#6C85A5,30%);
+$df-charcoal: rgb(34, 34, 34);
+
+// Type
+// ==============================
+$serif: 'FarnhamText', 'Merriweather', Georgia, 'Times New Roman', Times, serif;
+$serif-bold: 'FarnhamTextBold', Georgia, Arial, serif;
+$sans-serif: 'AantennaReg', 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+$sans-serif-light: 'AntennaExtraLight', 'Lato', 'Helvetica Neue', sans-serif;
+$base-font: 21px;
+$line-height: 1.58;
+$margin-top: 29px;
+$letter-spacing: -0.003em;

@@ -1,0 +1,65 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="http://www.sfchronicle.com/favicon.ico?v=3">
+    {% block head %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Begin Hearst analytics -->
+    <script type="text/javascript">
+        var omni_channelPath = "{{config.CATEGORY}} :: Special Projects :: {{config.PROJ_TITLE}}";
+        var omni_title = "{{title|safe}}";
+        var omni_className = "{% block hearst_class %}channel{% endblock %}";
+        var omni_publicationDate = "2016-07-22 00:00:00";
+        var omni_authorName = "{% block author %}Lucio Villa, Emma O'Neill{% endblock %}";
+        var omni_authorTitle = "San Francisco Chronicle staff";
+    </script>
+    <!-- End Hearst analytics -->
+
+    <!-- Hearst analytics: Ensighten -->
+    <script type="text/javascript">
+      (function(e) {
+        var t = '//nexus.ensighten.com/hearst/news/Bootstrap.js';
+        if (e.cookie.indexOf("nsghtn") > -1) {
+          if(e.cookie.indexOf("nsghtn=test-dev") > -1) {
+          console.log("Ensighten :: Test-Dev"); t = "//nexus-test.ensighten.com/hearst/news-dev/Bootstrap.js";
+          } else if(e.cookie.indexOf("nsghtn=test") > -1) {
+          console.log("Ensighten :: Test"); t = "//nexus-test.ensighten.com/hearst/news/Bootstrap.js";
+          } else if(e.cookie.indexOf("nsghtn=dev") > -1) {
+          console.log("Ensighten :: Dev"); t = "//nexus.ensighten.com/hearst/news-dev/Bootstrap.js";
+          }
+        }
+        e.write("<scr"+"ipt src='"+e.location.protocol+t+"'></scr"+"ipt>");
+      })(document);
+    </script>
+    <!-- End Hearst analytics: Ensighten -->
+
+  </head>
+  <body class="{% if config.DEBUG %}debug{% endif %}">
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    {% block content %}{% endblock %}
+
+    {% assets filters="uglifyjs", output="scripts/main.%(version)s.js", "scripts/main.js" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    
+    <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='bower_components/foundation-sites/js/foundation.core.js') }}"></script>
+
+    {% block javascript %}{% endblock %}
+
+    {% if config.DEBUG %}
+    <script>document.write('<script src="http://'
+        + location.host.split(':')[0]
+        + ':35729/livereload.js"></'
+        + 'script>')</script>
+    {% endif %}
+
+</body>
+</html>

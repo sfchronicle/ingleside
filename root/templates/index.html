@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block head %}
+{% include 'components/_social.html' %}
+{% endblock %}
+
+{% block hearst_title %}{% endblock %}
+{% block hearst_class %}{% endblock %}
+{% block author %}{% endblock %}
+
+{% block content %}
+<main class="container">
+  <div class="row">
+    <div class="large-8 large-offset-2 columns">
+    <h1>Hi.</h1>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block javascript %}
+<script>
+  $(document).ready(function() {
+    App.init();
+  });
+</script>
+{% endblock %}

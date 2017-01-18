@@ -1,0 +1,31 @@
+{
+  "name": "{%= app_name %}",
+  "description":"{%= app_description %}",
+  "author": "{%= author_name %}",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/{%= github_repo %}.git"
+  },
+  "devDependencies": {
+    "autoprefixer":"^6.6.0",
+    "grunt": "^1.0.1",
+    "grunt-concurrent": "^2.3.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-htmlmin": "^2.0.0",
+    "grunt-contrib-imagemin": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-open": "^0.2.3",
+    "grunt-postcss":"^0.8.0",
+    "grunt-sass": "^2.0.0",
+    "grunt-svgmin": "^4.0.0",
+    "grunt-usemin": "^3.1.1",
+    "jshint-stylish": "^2.2.1",
+    "load-grunt-tasks": "^3.5.2",
+    "time-grunt": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
