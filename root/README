@@ -1,6 +1,7 @@
-# Ingleside
-A simple flask scaffold for building client-side news graphics and applications. Includes:
+# {%= app_name %}
+{%= app_description %}
 
+### Includes:
 - Livereload for fast development
 - Grunt tasks for serving application
 - Jinja2 for sane templating
@@ -8,19 +9,23 @@ A simple flask scaffold for building client-side news graphics and applications.
 
 ### Requirements
 - Python 2.7.x
-- Node.js 0.12
-  - uglifyjs (`npm install -g uglifyjs`)
-  - clean-css (`npm install -g clean-css`)
-  - Bower and Grunt (`$ npm install -g grunt-cli bower`)
+- Node.js 0.12+
+- Bower (`npm install -g bower`)
+- Grunt (`npm install -g grunt-cli`)
 
 ### Installation
 ```bash
-$ git clone git@github.com:sfchronicle/ingleside.git $PROJECT_NAME
-$ cd $PROJECT_NAME
-$ mkvirtualenv $PROJECT_NAME
+$ git clone git@github.com:{%= github_repo %}.git {%= app_name %}
+$ cd {%= app_name %}
+$ mkvirtualenv {%= app_name %}
 $ pip install -r requirements.txt && npm install && bower install
-$ grunt serve
 ```
+
+### Running Project
+
+### Building Files
+
+### Deployment
 
 ### Build and deployment
 Now run `build.py` and specify if its for `production` or `staging` to compress assets for upload.

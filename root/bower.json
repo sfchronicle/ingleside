@@ -1,12 +1,11 @@
 {
   "name": "{%= app_name %}",
-  "description":"{%= app_description %}",
   "version": "0.0.1",
-  "author": "{%= author_name %}",
   "repository": {
     "type": "git",
     "url": "https://github.com/{%= github_repo %}.git"
   },
+  "authors": "{%= author_name %}",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -17,7 +16,6 @@
   ],
   "dependencies": {
     "foundation-sites": "~6.2.0",
-    "jquery": "~2.2.0",
     "normalize-scss": "normalize.scss#^4.2.1"
   }
 }
