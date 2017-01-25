@@ -18,13 +18,13 @@ exports.template = function(grunt, init, done) {
     var root = init.filesToCopy(props);
     init.copyAndProcess(root, props, { noProcess: "templates/**" });
 
+    //install bower packages
+    console.log("Installing Bower packages...");
+    exec("bower install");
+
     //install node modules
     console.log("Installing Node modules...");
     exec("npm install --cache-min 999999", done);
-
-    //install bower packages
-    console.log("Installing Bower packages...");
-    exec("bower install", done);
 
     // further instructions
     console.log("\nNow create a virtual environment and run 'pip install -r requirements.txt'");
