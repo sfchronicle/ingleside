@@ -51,7 +51,7 @@
     <![endif]-->
     {% block content %}{% endblock %}
 
-    {% assets filters="uglifyjs", output="scripts/main.%(version)s.js", "scripts/main.js" %}
+    {% assets output="scripts/main.%(version)s.js", "scripts/main.js" %}
       <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
 
